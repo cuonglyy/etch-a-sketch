@@ -1,28 +1,45 @@
 const DEFAULT_COLOR = "#000000";
 const DEFAULT_GRID = 16;
 
-const currentGrid = DEFAULT_GRID;
-const currentColor = DEFAULT_COLOR;
+let currentSize = DEFAULT_GRID;
+let currentColor = DEFAULT_COLOR;
 
 const clearBtn = document.querySelector("#clear-btn");
+const sizeSlider = document.querySelector(".slider");
 const gridContainer = document.querySelector("#grid-container");
+const sizeValue = document.querySelector(".size-value");
+const sliderContainer = document.querySelector(".slider-container");
 
-let changeGrid = (newGrid) => {
-  currentGrid = newGrid;
+let setSize = (newSize) => {
+  currentSize = newSize;
 }
 
-let changeColor = (newColor) => {
+let setColor = (newColor) => {
   currentColor = newColor;
 }
 
-let addColor = (e) => {
+let changeColor = (e) => {
   e.target.style.backgroundColor = currentColor;
 }
 
-// Removes all elements inside grid container and remakes the grid in new size
-let newGrid = () => {
+let changeGrid = (e) => {
+  setSize(e.target.value);
+}
+
+let updateSizeValue = (value) => {
+  sizeSlider.innerHTML = `${value} + " x " + ${value}`
+  //sliderContainer.appendChild(sizeValue);
+}
+
+// Removes all elements inside grid container
+let clearGrid = () => {
   gridContainer.innerHTML = '';
-  makeGrid(currentGrid);
+}
+
+let reloadGrid = () => {
+  clearGrid();
+  updateSizeValue();
+  makeGrid(currentSize);
 }
 
 // Use inline style to create css grids
@@ -37,12 +54,13 @@ let makeGrid = (gridNum) => {
     //Create grid element and add class attribute named "grid-item"
     const gridElement = document.createElement("div");
     gridElement.setAttribute("class", "grid-item")
-    gridElement.addEventListener("mouseenter", addColor);
+    gridElement.addEventListener("mouseenter", changeColor);
     gridContainer.appendChild(gridElement);
   }
 }
 
-clearBtn.addEventListener("click", newGrid);
+clearBtn.addEventListener("click", reloadGrid);
+sizeSlider.addEventListener("input", changeGrid);
 
 window.onload = () => {
   makeGrid(DEFAULT_GRID);

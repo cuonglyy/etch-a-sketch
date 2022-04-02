@@ -1,11 +1,13 @@
 .grid-item {
-  padding: 1.1em;
+  user-select: none;
 }
 
 #grid-container {
-  border: 3px solid black;
+  border: 2px solid black;
   display: grid;
   margin-top: 3em;
+  width: 500px;
+  height: 500px;
 }
 
 body {
@@ -18,5 +20,12 @@ body {
 
 #clear-btn {
   padding: 10px 10px;
+}
+
+#settings {
+  display: flex;
+  align-items: center;
+  gap: 4em;
   margin-top: 2em;
 }
+
