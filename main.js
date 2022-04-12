@@ -5,8 +5,8 @@ let currentSize = DEFAULT_GRID;
 let currentColor = DEFAULT_COLOR;
 
 const clearBtn = document.querySelector("#clear-btn");
-const sizeSlider = document.querySelector(".slider");
 const gridContainer = document.querySelector("#grid-container");
+const sizeSlider = document.querySelector(".slider");
 const sizeValue = document.querySelector(".size-value");
 const sliderContainer = document.querySelector(".slider-container");
 
@@ -22,13 +22,14 @@ let changeColor = (e) => {
   e.target.style.backgroundColor = currentColor;
 }
 
-let changeGrid = (e) => {
-  setSize(e.target.value);
-}
 
 let updateSizeValue = (value) => {
-  sizeSlider.innerHTML = `${value} + " x " + ${value}`
-  //sliderContainer.appendChild(sizeValue);
+  sizeValue.textContent = value + " x " + value;
+}
+
+let changeGrid = (e) => {
+  updateSizeValue(e.target.value);
+  setSize(e.target.value);
 }
 
 // Removes all elements inside grid container
@@ -38,7 +39,6 @@ let clearGrid = () => {
 
 let reloadGrid = () => {
   clearGrid();
-  updateSizeValue();
   makeGrid(currentSize);
 }
 
