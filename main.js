@@ -4,6 +4,8 @@ const DEFAULT_GRID = 16;
 let currentSize = DEFAULT_GRID;
 let currentColor = DEFAULT_COLOR;
 
+const colorBtn = document.querySelector("#color-btn");
+const rainbowBtn = document.querySelector("#rainbow-btn");
 const clearBtn = document.querySelector("#clear-btn");
 const gridContainer = document.querySelector("#grid-container");
 const sizeSlider = document.querySelector(".slider");
@@ -22,14 +24,11 @@ let changeColor = (e) => {
   e.target.style.backgroundColor = currentColor;
 }
 
-
 let updateSizeValue = (value) => {
   sizeValue.textContent = value + " x " + value;
-}
 
-let changeGrid = (e) => {
-  updateSizeValue(e.target.value);
-  setSize(e.target.value);
+  //This is to have the background color change with the slider thumb
+  sizeSlider.style.background = "linear-gradient(90deg, rgb(45, 45, 45)" + value + "%, rgb(255, 255, 255)" + value + "%)";
 }
 
 // Removes all elements inside grid container
@@ -40,6 +39,11 @@ let clearGrid = () => {
 let reloadGrid = () => {
   clearGrid();
   makeGrid(currentSize);
+}
+
+let changeGrid = (e) => {
+  updateSizeValue(e.target.value);
+  setSize(e.target.value);
 }
 
 // Use inline style to create css grids
@@ -61,6 +65,7 @@ let makeGrid = (gridNum) => {
 
 clearBtn.addEventListener("click", reloadGrid);
 sizeSlider.addEventListener("input", changeGrid);
+sizeSlider.addEventListener("mouseup", reloadGrid);
 
 window.onload = () => {
   makeGrid(DEFAULT_GRID);
