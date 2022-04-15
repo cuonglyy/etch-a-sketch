@@ -11,7 +11,7 @@
   width: 500px;
   height: 500px;
   box-shadow: 1px 1px 10px 1px black;
-  margin: 4em 0em 2em 0em;
+  margin: 2.5em 0em 2em 0em;
 }
 
 body {
@@ -21,7 +21,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #d3d3d3;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 button {
@@ -100,4 +100,23 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 input[type="color"]::-webkit-color-swatch {
   border: none;
   border-radius: 100%;
+}
+
+footer {
+  margin-top: auto;
+  padding: 1rem;
+  background-color:rgba(45, 45, 45, 0.4);
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+}
+
+#title {
+  font-size: 46px; 
+  text-align: center;
+  margin-top: auto;
+}
+
+footer p {
+  margin: 0;
 }
