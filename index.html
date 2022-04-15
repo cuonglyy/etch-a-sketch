@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div style="font-size:36px; text-align:center;">Etch-A-Sketch</div>
+    <div style="font-size:46px; text-align:center;">Etch-A-Sketch</div>
     <div id="grid-container"></div>
     <div id="settings">
-      <button id="color-btn">Color</button>
-      <button id="rainbow-btn">Rainbow</button>
+      <div class="circle">
+        <input id="color-picker" type="color" value="#000000">
+      </div>
+      <button id="color-btn" value="color">Color</button>
+      <button id="rainbow-btn" value="rainbow">Rainbow</button>
       <button id="clear-btn">Clear</button>
     </div>
     <div class="slider-container">
